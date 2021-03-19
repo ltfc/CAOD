@@ -1,0 +1,98 @@
+syntax = "proto3";
+option go_package = ".;cag2";
+package cag2;
+
+/**
+ * quanku opendata 是中华珍宝馆开放数据接口，为科研机构和学校提供开放免费的艺术相关数据集
+ * 可以用于论文编写和深度学习模型训练。
+ */
+// =========================
+// 中国艺术开放数据库
+// =========================
+service ChinaArtOpenDataService {
+    // 返回作品数据列表
+    rpc list(ListCAODItemReq) returns (ListCAODItemRes) {}
+    // 获取下载路径，传入作品的 zbgsn，返回下载路径
+    rpc getDownloadUrl(GetCAODDownloadUrlReq) returns (GetCAODDownloadUrlRes) {};
+}
+
+message CAODItem {
+    // 珍宝馆馆藏序列号，全局唯一，用于查询资料详细信息
+    string caodsn = 1;
+    // 年代信息
+    string age = 2;
+    // 作品信息
+    string name = 3;
+    // 作者名称
+    string author = 4;
+    // 描述
+    string desc = 5;
+    // 题跋信息
+    string comment_info = 6;
+    // 印鉴信息
+    string stamp_info = 7;
+    // 著录书籍
+    string reference_book = 8;
+    // 材质类型  纸本 泥金纸 靛蓝纸 紫色纸 洒金纸 笺纸 绢 绫 绸 布 菩提叶 缂丝
+    string media_type = 9;
+    // 画材类型: 水墨  焦墨   白描  指画 浅绛 大青绿 金碧  小青绿
+    string material_type = 10;
+    // 形制: 立轴 卷改轴 页改轴 长卷 高头大卷 手卷 横披 册页 散页 折扇  团扇 镜心 组屏 单屏
+    string style_type = 11;
+    // 尺寸
+    string size = 12;
+    // 作品标签，用于对查询结果进行过滤
+    repeated string tags = 13;
+    // 画面上的元素
+    repeated string subjects = 14;
+    // 技法
+    repeated string technique = 15;
+}
+
+// API 调用的上下文对象
+message CAODToken {
+    // app客户端 key
+    string api_key = 2;
+    // app客户端 security
+    string api_sec = 3;
+}
+
+// 分页查询的页面信息
+message CAODDataPage {
+    // 数据开始位置
+    int32 skip = 1;
+    // 返回的数据长度
+    int32 limit = 2;
+}
+  
+
+// 分页获取作品数据
+message ListCAODItemReq {
+    // 访问令牌
+    CAODToken token = 1;
+    // 翻页状态
+    CAODDataPage page = 2;
+}
+
+// 返回作品列表
+message ListCAODItemRes {
+    // 分页后的作品数据
+    repeated CAODItem data = 1;
+    // 作品总数
+    int32 total = 2;
+}
+
+// 获取作品下载路径
+message GetCAODDownloadUrlReq {
+    // 访问令牌
+    CAODToken token = 1;
+    // 翻页状态
+    string caodsn = 2;
+}
+
+// 返回作品下载路径
+message GetCAODDownloadUrlRes {
+    // 分页后的作品数据
+    string url = 1;
+}
+

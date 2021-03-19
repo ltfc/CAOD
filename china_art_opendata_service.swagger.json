@@ -1,0 +1,273 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "china_art_opendata_service.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cag2.ChinaArtOpenDataService/getDownloadUrl": {
+      "post": {
+        "summary": "获取下载路径，传入作品的 zbgsn，返回下载路径",
+        "operationId": "ChinaArtOpenDataService_getDownloadUrl",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cag2GetCAODDownloadUrlRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cag2GetCAODDownloadUrlReq"
+            }
+          }
+        ],
+        "tags": [
+          "ChinaArtOpenDataService"
+        ]
+      }
+    },
+    "/cag2.ChinaArtOpenDataService/list": {
+      "post": {
+        "summary": "返回作品数据列表",
+        "operationId": "ChinaArtOpenDataService_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cag2ListCAODItemRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cag2ListCAODItemReq"
+            }
+          }
+        ],
+        "tags": [
+          "ChinaArtOpenDataService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "cag2CAODDataPage": {
+      "type": "object",
+      "properties": {
+        "skip": {
+          "type": "integer",
+          "format": "int32",
+          "title": "数据开始位置"
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "返回的数据长度"
+        }
+      },
+      "title": "分页查询的页面信息"
+    },
+    "cag2CAODItem": {
+      "type": "object",
+      "properties": {
+        "caodsn": {
+          "type": "string",
+          "title": "珍宝馆馆藏序列号，全局唯一，用于查询资料详细信息"
+        },
+        "age": {
+          "type": "string",
+          "title": "年代信息"
+        },
+        "name": {
+          "type": "string",
+          "title": "作品信息"
+        },
+        "author": {
+          "type": "string",
+          "title": "作者名称"
+        },
+        "desc": {
+          "type": "string",
+          "title": "描述"
+        },
+        "commentInfo": {
+          "type": "string",
+          "title": "题跋信息"
+        },
+        "stampInfo": {
+          "type": "string",
+          "title": "印鉴信息"
+        },
+        "referenceBook": {
+          "type": "string",
+          "title": "著录书籍"
+        },
+        "mediaType": {
+          "type": "string",
+          "title": "材质类型  纸本 泥金纸 靛蓝纸 紫色纸 洒金纸 笺纸 绢 绫 绸 布 菩提叶 缂丝"
+        },
+        "materialType": {
+          "type": "string",
+          "title": "画材类型: 水墨  焦墨   白描  指画 浅绛 大青绿 金碧  小青绿"
+        },
+        "styleType": {
+          "type": "string",
+          "title": "形制: 立轴 卷改轴 页改轴 长卷 高头大卷 手卷 横披 册页 散页 折扇  团扇 镜心 组屏 单屏"
+        },
+        "size": {
+          "type": "string",
+          "title": "尺寸"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "作品标签，用于对查询结果进行过滤"
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "画面上的元素"
+        },
+        "technique": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "技法"
+        }
+      }
+    },
+    "cag2CAODToken": {
+      "type": "object",
+      "properties": {
+        "apiKey": {
+          "type": "string",
+          "title": "app客户端 key"
+        },
+        "apiSec": {
+          "type": "string",
+          "title": "app客户端 security"
+        }
+      },
+      "title": "API 调用的上下文对象"
+    },
+    "cag2GetCAODDownloadUrlReq": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "#/definitions/cag2CAODToken",
+          "title": "访问令牌"
+        },
+        "caodsn": {
+          "type": "string",
+          "title": "翻页状态"
+        }
+      },
+      "title": "获取作品下载路径"
+    },
+    "cag2GetCAODDownloadUrlRes": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "分页后的作品数据"
+        }
+      },
+      "title": "返回作品下载路径"
+    },
+    "cag2ListCAODItemReq": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "#/definitions/cag2CAODToken",
+          "title": "访问令牌"
+        },
+        "page": {
+          "$ref": "#/definitions/cag2CAODDataPage",
+          "title": "翻页状态"
+        }
+      },
+      "title": "分页获取作品数据"
+    },
+    "cag2ListCAODItemRes": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cag2CAODItem"
+          },
+          "title": "分页后的作品数据"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "作品总数"
+        }
+      },
+      "title": "返回作品列表"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}
