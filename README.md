@@ -122,7 +122,7 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 ```
 > curl -X POST "http://127.0.0.1:8080/cag2.ChinaArtOpenDataService/getDownloadUrl" -H "Content-Type: application/json" -d '{"token": { "apiKey": "t8nwc4m34yn", "apiSec": "axak2qyorrbkmelcyz2" },"caodsn": "ZB.H7CQM"}'
 
-{"url":"http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LTAI4GABAJTRLmyzd7NtBpaY&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"}%
+{"url":"http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LKJLKJlasd2u89234YEDAabE&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"}%
 ```
 
 
@@ -131,7 +131,7 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 
 例子：
 ```shell
-> wget "http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LTAI4GABAJTRLmyzd7NtBpaY&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"
+> wget "http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LKJLKJlasd2u89234YEDAabE&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"
 ```
 
 ### 5. 数据规模
