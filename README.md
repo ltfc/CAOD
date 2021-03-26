@@ -1,25 +1,19 @@
-# 中国书画艺术开放数据库（China Art Open Data【CAOD】）
+# 中国艺术开放数据服务
 
-中国书画艺术开放数据服务，简称"CAOD"，是中华珍宝馆（ http://ltfc.net ）提供的开放艺术数据服务，提供历代书法绘画作品的描述信息和图片数据文件下载，为书画AI研究提供训练数据，也可以用于其他和传统艺术相关的科研工作。
+## 关于CAOD（China Art Open Data）
+中国艺术开放数据服务，简称"CAOD"，是由中华珍宝馆（http://ltfc.net）维护的免费开放数据服务，提供中国传统艺术（目前主要是历代书法绘画作品）的信息查询和图片数据文件下载。
+CAOD可以为中国艺术方向的AI研究提供训练数据，也可以用于其他和传统艺术相关的科研工作，我们遵循CC开放协议，所提供的数据和图片您可以任意使用，无需付费，无需注明出处。
 
+## 数据接口 (1.0 Beta)
 ### 1. 如何使用 CAOD 数据
-CAOD 以 WEB 服务的方式提供数据，数据的接口文件描述请参考：
-
-protobuf定义文件：china_art_opendata_service.proto
-
-或者是
-
-swagger定义 ：china_art_opendata_service.swagger.json
+CAOD 以 WEB 服务的方式提供数据，数据的接口文件描述有下面两种，您可以选择其中一个作为参考：
+* protobuf定义文件：china_art_opendata_service.proto
+* swagger定义 ：china_art_opendata_service.swagger.json
 
 
-您需要首先获取 APPID 和 APPSEC，请发送邮件到中华珍宝馆支持邮箱( support@ltfc.net )，说明您的学校和科研项目，获得批准后，我们会尽快为您创建 APPID 和 APPSEC。
+在调用服务接口之前，您需要首先获取 APPID 和 APPSEC，请发送邮件到中华珍宝馆支持邮箱( support@ltfc.net )，说明您的学校和科研项目，获得批准后，我们会尽快为您创建 APPID 和 APPSEC。
 
-获取到正确的 APPID 和 APPSEC 之后，可以使用 HTTP POST 方法请求我们的数据接口服务(https://api.quanku.art)。
-
-
-## 数据接口说明：
-
-目前提供两个主要的数据接口：
+获取到正确的 APPID 和 APPSEC 之后，可以使用 HTTP POST 方法请求我们的数据接口服务(https://api.quanku.art)，关于接口下文有更详细的描述。
 
 ### 2. 获取数据文件列表
 https://api.quanku.art/cag2.ChinaArtOpenDataService/list
@@ -39,7 +33,7 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/list
     },
     "page": {
       "$ref": "#/definitions/cag2CAODDataPage",
-      "title": "翻页状态"
+      "title": "分页状态"
     }
   },
   "title": "分页获取作品数据"
