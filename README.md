@@ -12,7 +12,7 @@ protobuf定义文件：china_art_opendata_service.proto
 swagger定义 ：china_art_opendata_service.swagger.json
 
 
-您需要首先获取 APPID 和 APPSEC，请发送邮件到中华珍宝馆支持邮箱( support@ltf.net )，说明您的学校和科研项目，获得批准后，我们会尽快为您创建 APPID 和 APPSEC。
+您需要首先获取 APPID 和 APPSEC，请发送邮件到中华珍宝馆支持邮箱( support@ltfc.net )，说明您的学校和科研项目，获得批准后，我们会尽快为您创建 APPID 和 APPSEC。
 
 获取到正确的 APPID 和 APPSEC 之后，可以使用 HTTP POST 方法请求我们的数据接口服务(https://api.quanku.art)。
 
@@ -24,10 +24,11 @@ swagger定义 ：china_art_opendata_service.swagger.json
 ### 2. 获取数据文件列表
 https://api.quanku.art/cag2.ChinaArtOpenDataService/list
 
-接口说明：
+#### 接口说明：
 本接口用于返回CAOD的数据列表，传入数据页面，返回分页后的数据列表。
 
-参数说明:
+#### 参数说明
+请求参数的数据格式如下：
 ```javascript
 "cag2ListCAODItemReq": {
   "type": "object",
@@ -46,7 +47,7 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/list
 ```
 请参考 china_art_opendata_service.swagger.json 中的 cag2ListCAODItemReq 定义。
 
-返回值类型：
+#### 返回值类型
 正常调用的返回值如下：
 ```javascript
 "cag2ListCAODItemRes": {
@@ -70,8 +71,9 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/list
 ```
 请参考 china_art_opendata_service.swagger.json 中的 "cag2ListCAODItemRes" 定义。
 
-例子:
-```
+
+#### 调用例子:
+```bash
 > curl -X POST "https://api.quanku.art/cag2.ChinaArtOpenDataService/list" -H "Content-Type: application/json" -d '{"token": { "apiKey": "t8nwc4m34yn", "apiSec": "axak2qyorrbkmelcyz2" },"page": { "skip": 0, "limit": 1 }}'
 
 {"data":[{"caodsn":"ZB.H31W0", "age":"清", "name":"瓶菊图", "author":"虚谷", "desc":"", "commentInfo":"", "stampInfo":"", "referenceBook":"", "mediaType":"", "materialType":"", "styleType":"", "size":"", "tags":[], "subjects":[], "technique":[]}], "total":3253}%
@@ -80,10 +82,11 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/list
 ### 3. 获取图片文件下载路径
 https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 
-接口说明:
+#### 接口说明:
 本接口用于查询特定图片的下载
 
-参数说明:
+#### 参数说明
+调用参数格式如下：
 ```javascript
 "cag2GetCAODDownloadUrlReq": {
   "type": "object",
@@ -102,7 +105,7 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 ```
 请参考 china_art_opendata_service.swagger.json 中的 cag2GetCAODDownloadUrlReq 定义
 
-返回值类型：
+#### 返回值类型：
 正常调用的返回值如下：
 ```javascript
 "cag2GetCAODDownloadUrlRes": {
@@ -125,16 +128,34 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 {"url":"http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LKJLKJlasd2u89234YEDAabE&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"}%
 ```
 
-
 ### 4. 下载图片文件
 使用通过 /cag2.ChinaArtOpenDataService/getDownloadUrl 获取的下载地址，下载图片文件
 
 例子：
-```shell
-> wget "http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LKJLKJlasd2u89234YEDAabE&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"
-```
+```bash
+> wget "http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LTAI4GABAJTRLmyzd7NtBpaY&Expires=3233447046&Signature=cF%2FUFRD6PPZUBU7aHjsQZXqB8BY%3D" -O test.jpg
 
-### 5. 数据规模
-CAOD 向研究者提供的是经过我们校订的数据，尽量做到准确详细，截止（2021-03-19），我们已经精订了 3865 幅作品，并且以每月数百幅的速度在增加。尽管如此，精订的数据在我们全部数据中占的比例还是非常低，我们的数据资料已经超过18万幅，所以未来我们会投入大量资金进行数据校订，目标是提供一个最全面，最精确的书画大数据集，服务于书画方向的AI研究者和技术研究者，进而让AI能够更好的服务于艺术行业，非常期待看到您的各种天才的创新应用。
+--2021-03-26 09:51:48--  http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LTAI4GABAJTRLmyzd7NtBpaY&Expires=3233447046&Signature=cF%2FUFRD6PPZUBU7aHjsQZXqB8BY%3D
+Resolving dl-ac.ltfc.net (dl-ac.ltfc.net)... 222.222.88.78
+Connecting to dl-ac.ltfc.net (dl-ac.ltfc.net)|222.222.88.78|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 170090 (166K) [image/jpeg]
+Saving to: ‘test.jpg’
+
+test.jpg                                                             100%[====================================================>] 166.10K  --.-KB/s    in 0.03s
+
+2021-03-26 09:51:48 (5.48 MB/s) - ‘test.jpg’ saved [170090/170090]
+```
+### 5. 调用频次限制
+对接口有调用频次限制，每分钟调用次数<500次，日总计调用次数<100000 次，请控制您的调用频率。
+
+### 6. 数据规模
+CAOD 向研究者提供的是经过我们校订的数据，尽量做到准确详细，截止到 2021-03-19，我们已经精订了 3865 幅作品，并且以每月数百幅的速度在增加。
+
+尽管如此，精订的数据在我们全部18万多的数据中占的比例还是非常低，未来我们会投入大量资金进行数据校订，目标是提供一个最全面，最精确的书画大数据集，服务于书画方向的AI研究者和技术研究者，进而让AI能够更好的服务于艺术行业，非常期待看到您的各种天才的创新应用。
 
 单个团队的力量毕竟有限，如果您愿意贡献一份力量，请不要害羞，积极的和我们联系(support@ltfc.net)吧，期待您的参与。
+
+### 7. 已合作高校和机构
+* _中国科技大学_
+* _香港中文大学（深圳）_
