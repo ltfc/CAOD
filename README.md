@@ -120,7 +120,7 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 ```
 > curl -X POST "http://127.0.0.1:8080/cag2.ChinaArtOpenDataService/getDownloadUrl" -H "Content-Type: application/json" -d '{"token": { "apiKey": "t8nwc4m34yn", "apiSec": "axak2qyorrbkmelcyz2" },"caodsn": "ZB.H7CQM"}'
 
-{"url":"http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LKJLKJlasd2u89234YEDAabE&Expires=3232831537&Signature=M5TmhHlNZ4fBFQZuekIyabFw2gQ%3D"}%
+{"url":"http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=XXXXXXXXXXX&Expires=3232831537&Signature=XXXXXXXXXXXX"}%
 ```
 
 ### 4. 下载图片文件
@@ -128,9 +128,9 @@ https://api.quanku.art/cag2.ChinaArtOpenDataService/getDownloadUrl
 
 例子：
 ```bash
-> wget "http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LTAI4GABAJTRLmyzd7NtBpaY&Expires=3233447046&Signature=cF%2FUFRD6PPZUBU7aHjsQZXqB8BY%3D" -O test.jpg
+> wget "http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=XXXXXXXXXXXX&Expires=3233447046&Signature=XXXXXXXXXXXX" -O test.jpg
 
---2021-03-26 09:51:48--  http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=LTAI4GABAJTRLmyzd7NtBpaY&Expires=3233447046&Signature=cF%2FUFRD6PPZUBU7aHjsQZXqB8BY%3D
+--2021-03-26 09:51:48--  http://dl-ac.ltfc.net/picstore/5be3971d8ed7f411e26a6393/80_16.jpg?OSSAccessKeyId=XXXXXXXXXXXX&Expires=3233447046&Signature=cF%XXXXXXXXXXXX%3D
 Resolving dl-ac.ltfc.net (dl-ac.ltfc.net)... 222.222.88.78
 Connecting to dl-ac.ltfc.net (dl-ac.ltfc.net)|222.222.88.78|:80... connected.
 HTTP request sent, awaiting response... 200 OK
